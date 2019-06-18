@@ -1,0 +1,15 @@
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: http://eureka-8000.com:8000/eureka/,http://eureka-9000.com:9000/eureka/
+  instance:
+    prefer-ip-address: true
+server:
+  port: 9999
+spring:
+  application:
+    name: zuul-gateway
+zuul:
+  routes:
+    serve-consumer-ribbon: /user/** #以/user开头的所有路径都转发给user-provider进行处理
+  ignored-services: "*" #忽略掉服务名访问方式 使用上面/user的方式来访问
